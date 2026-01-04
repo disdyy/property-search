@@ -1,0 +1,803 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#home,
+#results,
+#about,
+#contact {
+  scroll-margin-top: 90px; /* prevents navbar covering section titles */
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background: #fff;
+}
+
+/* ✅ FIX: stretch page height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.layout {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 2fr 1fr;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 24px; /* left ↔ right gap */
+  row-gap: 40px;    /* top ↕ bottom gap */
+}
+
+/* Mobile / small screens */
+@media (max-width: 1000px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .results {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Results Count ---------- */
+.count {
+  margin: 20px auto 10px auto;
+  padding: 10px 18px;
+  width: fit-content;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.count span {
+  font-weight: 800;
+}
+
+/* Property Cards */
+.property-card {
+  display: flex;
+  flex-direction: column;      /* image top, content below */
+  border: 1px solid #e2e2e2;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  height: 100%;                /* makes cards uniform */
+}
+
+/* FIXED: your JSX uses <img className="property-image" /> */
+.property-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;         /*  forces square shape */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.property-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.property-price {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.property-meta {
+  color: #444;
+  margin-top: 4px;
+}
+
+.property-desc {
+  margin-top: 10px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.property-location {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+.property-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center; /* centers the buttons */
+  flex-wrap: wrap;
+}
+
+/* Mobile responsive */
+@media (max-width: 700px) {
+  .property-card {
+    grid-template-columns: 1fr;
+  }
+
+  .property-image {
+    height: 220px;
+  }
+}
+
+/* --- Clean Search Card --- */
+.search-card {
+  max-width: 1100px;          /* keeps form centered and not too wide */
+  margin: 0 auto 18px auto;   /* center the whole box */
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+
+.search-card h2 {
+  margin: 0 0 18px 0;
+  text-align: center;         /* centre the title */
+  font-size: 22px;
+}
+
+/* --- Grid layout --- */
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* prevents overflow */
+  gap: 18px;                                        /*  more space between boxes */
+  align-items: start;
+}
+
+/* Each label becomes a clean block */
+.search-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                 /* space between label text and input */
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  text-align: center;       /* centres label text nicely */
+}
+
+/* Inputs/selects never overflow */
+.search-grid input,
+.search-grid select {
+  width: 100%;
+  height: 44px;             /* consistent height */
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: #fbfbfb;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;   /* stops overflow */
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Focus effect */
+.search-grid input:focus,
+.search-grid select:focus {
+  background: #fff;
+  border-color: rgba(0,0,0,0.55);
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.06);
+}
+
+/* Buttons aligned nicely */
+.search-actions {
+  display: flex;
+  justify-content: center;   /*centre buttons */
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.search-actions button {
+  min-width: 130px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.20);
+  background: #f3f3f3;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.search-actions button[type="submit"] {
+  background: #093FB4;
+  color: #fff;
+  border-color: #093FB4;
+}
+
+.search-actions button:hover {
+  filter: brightness(0.96);
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .search-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-actions button {
+    width: 100%;
+  }
+}
+
+/* ---------- Unified Button Styles ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.25);
+  background:#f5f5f5;
+  color: #090101;
+  cursor: pointer;
+  font-weight: 800;
+  gap: 10px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.btn:hover {
+  filter: brightness(0.96);
+}
+
+/*FIXED: Link should look like a button (not blue underline) */
+.btn-link {
+  text-decoration: none;
+  border-color:  #093FB4;
+  background-color:  #093FB4;
+  color: #f5f5f5;
+}
+
+/* ---------- Property Card Buttons Layout ---------- */
+.property-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Favourites Panel ---------- */
+.favourites {
+  border: 2px dashed #aaa;
+  border-radius: 14px;
+  padding: 16px;
+  min-height: 180px;
+  background: #fff;
+}
+
+/* Grid inside favourites */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Each favourite box */
+.fav-item {
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 14px;
+  padding: 12px;
+  background: #fafafa;
+}
+
+.fav-price {
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.fav-meta {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .fav-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Favourites page grid */
+.fav-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.fav-dropbar {
+  margin: 12px auto 18px auto;
+  padding: 14px 16px;
+  border: 2px dashed rgba(0,0,0,0.25);
+  border-radius: 14px;
+  background: #ffffff;
+  max-width: 900px;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .fav-page-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .fav-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+
+  /*Make everything inside navbar Times New Roman */
+  font-family: "Times New Roman", Times, serif;
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 72px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+/* Make navbar full width even though #root is centered */
+.navbar {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Keep navbar content nicely centered inside */
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Brand (Property Finder on left) */
+.navbar-brand {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: 0.3px;
+
+  color: #093FB4;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Links in the middle */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 44px;
+  flex: 1;
+}
+
+/* One clean navbar-link rule (merged your duplicates) */
+.navbar-link {
+  font-family: "Times New Roman", Times, serif; /*ensure Times New Roman */
+  text-decoration: none;
+  color: #111;
+  font-weight: 700;
+  font-size: 18px;
+
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+
+  /* allows using <button> OR <a> */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-link:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+/* Right button */
+.navbar-cta {
+  font-family: "Times New Roman", Times, serif; /* ensure Times New Roman */
+  text-decoration: none;
+  color: #111;
+  font-weight: 800;
+  font-size: 18px;
+
+  padding: 10px 16px;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.navbar-cta:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+}
+
+.section-box {
+  margin-top: 60px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.section-box h2 {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.section-box p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ---------- Contact Section ---------- */
+
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Inputs & Select */
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid #cfd8cc;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif; /* required */
+  outline: none;
+  box-sizing: border-box;
+}
+
+.contact-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Focus state */
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color: #9aa59a;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* Checkbox row */
+.contact-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Status message */
+.contact-status {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+/* Send button – match existing buttons */
+.contact-btn {
+  height: 48px;
+  border-radius: 14px;
+  border: 2px solid rgba(0,0,0,0.25);
+  background:#093FB4;
+  border-color: #093FB4;
+  color: #f5f5f5;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.contact-btn:hover {
+  filter: brightness(0.96);
+}
+.property-date {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+}
+
+/* ---------- Property Details Page ---------- */
+
+.details-back {
+  display: inline-flex;
+  margin-bottom: 12px;
+}
+
+.details-hero {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.details-noimage {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: #777;
+  background: #fff;
+}
+
+.details-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  justify-content: flex-start;
+}
+
+.details-tab {
+  height: 40px;
+  padding: 0 14px;
+}
+
+.details-tab-active {
+  background: #f3f3f3;
+}
+
+.details-panel {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: left;
+}
+
+.details-gallery-main {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  display: block;
+}
+
+.details-thumbs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.details-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.details-thumb-active {
+  border: 2px solid #000;
+}
+/* ---------- FOOTER ---------- */
+
+.footer {
+  background: #093FB4;
+  color: #ffffff;
+  margin-top: 80px;
+  padding-top: 60px;
+}
+
+/* Full width even if root is centered */
+.footer {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: auto;
+}
+
+/* Inner content */
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 40px 24px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-title {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.footer-subtitle {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.footer-text {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  font-size: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.footer-links li:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding: 16px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.footer-credit {
+  font-style: italic;
+}
+.footer,
+.footer * {
+  font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+}
